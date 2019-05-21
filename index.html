@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Uploader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
 </head>
 <body>
 <h1>Dementoren Image upload</h1>
@@ -15,6 +16,18 @@
     var fileInput = document.getElementById('fileInput');
     var fileDisplayArea = document.getElementById('fileDisplayArea');
 
+    //toDo store image in DB
+    var store = localforage.createInstance({
+        name: "nameHere"
+    });
+
+    var otherStore = localforage.createInstance({
+        name: "otherName"
+    });
+
+    // Setting the key on one of these doesn't affect the other.
+    store.setItem("key", "value");
+    otherStore.setItem("key", "value2");
 
     fileInput.addEventListener('change', function (e) {
         console.log(fileInput.value);
