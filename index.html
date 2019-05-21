@@ -8,14 +8,41 @@
 <h1>Dementoren Image upload</h1>
 <p>hier kannst du ein Bild hochladen: </p>
 <input id="fileInput" type="file" accept="image/*"/>
-<button type="button">Upload</button>
+
+<div id="fileDisplayArea"><!-- waiting for the image --></div>
 
 <script>
-    var reader = new FileReader();
     var fileInput = document.getElementById('fileInput');
     var fileDisplayArea = document.getElementById('fileDisplayArea');
-    fileInput.addEventListener('change', function(e) {
-       console.log(fileInput.value)
+
+
+    fileInput.addEventListener('change', function (e) {
+        console.log(fileInput.value);
+
+        var file = fileInput.files[0];
+        var imageType = /image.*/;
+
+        if (file.type.match(imageType)) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                fileDisplayArea.innerHTML = "";
+
+                // Create a new image.
+                var img = new Image();
+                // Set the img src property using the data URL.
+                img.src = reader.result;
+
+                // Add the image to the page.
+                fileDisplayArea.appendChild(img);
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            fileDisplayArea.innerHTML = "File not supported!";
+        }
+
+
     });
 
 
