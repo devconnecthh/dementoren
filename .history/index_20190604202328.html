@@ -11,7 +11,6 @@
 <input id="fileInput" type="file" accept="image/*"/>
 
 <div id="fileDisplayArea"><!-- waiting for the image --></div>
-<iframe id="renderedHtml" class="rendered-html"></iframe>
 
 <script>
     var fileInput = document.getElementById('fileInput');
@@ -45,10 +44,6 @@
 
                 // Add the image to the page.
                 fileDisplayArea.appendChild(img);
-
-                const renderedHtml = document.getElementById('renderedHtml');
-
-                renderedHtml.contentDocument.body.innerHTML = 'Test'
             }
 
             reader.readAsDataURL(file);

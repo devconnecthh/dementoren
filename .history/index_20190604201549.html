@@ -11,7 +11,6 @@
 <input id="fileInput" type="file" accept="image/*"/>
 
 <div id="fileDisplayArea"><!-- waiting for the image --></div>
-<iframe id="renderedHtml" class="rendered-html"></iframe>
 
 <script>
     var fileInput = document.getElementById('fileInput');
@@ -23,8 +22,12 @@
     });
 
     var otherStore = localforage.createInstance({
-        name: "images"
+        name: "otherName"
     });
+
+    // Setting the key on one of these doesn't affect the other.
+    store.setItem("key", "value");
+    otherStore.setItem("key", "value2");
 
     fileInput.addEventListener('change', function (e) {
         console.log(fileInput.value);
@@ -45,14 +48,12 @@
 
                 // Add the image to the page.
                 fileDisplayArea.appendChild(img);
-
-                const renderedHtml = document.getElementById('renderedHtml');
-
-                renderedHtml.contentDocument.body.innerHTML = 'Test'
             }
 
             reader.readAsDataURL(file);
-            // localforage.setItem('image', img.src, (e) => console.log('image stored in indexedDB'));
+            var store = localforage.createInstance({
+              name: file
+          });
         } else {
             fileDisplayArea.innerHTML = "File not supported!";
         }
