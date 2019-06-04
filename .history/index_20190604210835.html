@@ -87,9 +87,10 @@ downloadButton.addEventListener('click', function (e){
 
   localforage.getItem('image', function(err, value) {
     download('wireframe.html', value);
-  });
+    console.log(value);
+});
 
-})
+                })
 
 </script>
 </body>

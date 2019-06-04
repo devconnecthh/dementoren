@@ -84,12 +84,9 @@
     });
 
 downloadButton.addEventListener('click', function (e){
+                  download('wireframe.html', generatedHtml);
 
-  localforage.getItem('image', function(err, value) {
-    download('wireframe.html', value);
-  });
-
-})
+                })
 
 </script>
 </body>

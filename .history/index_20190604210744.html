@@ -84,12 +84,13 @@
     });
 
 downloadButton.addEventListener('click', function (e){
+                  download('wireframe.html', localforage.getItem('image', function(err, value) {
+    // Run this code once the value has been
+    // loaded from the offline store.
+    console.log(value);
+}));
 
-  localforage.getItem('image', function(err, value) {
-    download('wireframe.html', value);
-  });
-
-})
+                })
 
 </script>
 </body>

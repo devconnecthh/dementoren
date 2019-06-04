@@ -71,11 +71,11 @@
                 <p>This is a paragraph</p>`
 
                 renderedHtml.contentDocument.body.innerHTML =  generatedHtml
-                localforage.setItem('image', generatedHtml, (e) => console.log('image stored in indexedDB'));
 
             }
 
             reader.readAsDataURL(file);
+            localforage.setItem('image', generatedHtml, (e) => console.log('image stored in indexedDB'));
         } else {
             fileDisplayArea.innerHTML = "File not supported!";
         }
@@ -84,12 +84,9 @@
     });
 
 downloadButton.addEventListener('click', function (e){
+                  download('wireframe.html', generatedHtml);
 
-  localforage.getItem('image', function(err, value) {
-    download('wireframe.html', value);
-  });
-
-})
+                })
 
 </script>
 </body>
