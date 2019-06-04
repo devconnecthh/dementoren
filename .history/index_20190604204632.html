@@ -11,28 +11,11 @@
 <input id="fileInput" type="file" accept="image/*"/>
 
 <div id="fileDisplayArea"><!-- waiting for the image --></div>
-<h2>Preview</h2>
-<button id="download">Download awesome HTML</button>
 <iframe id="renderedHtml" class="rendered-html"></iframe>
 
 <script>
     var fileInput = document.getElementById('fileInput');
     var fileDisplayArea = document.getElementById('fileDisplayArea');
-    var downloadButton = document.getElementById('download');
-
-
-    function download(filename, text) {
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(text));
-      element.setAttribute('download', filename);
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-  }
 
     //toDo store image in DB
     var store = localforage.createInstance({
@@ -66,19 +49,9 @@
 
                 const renderedHtml = document.getElementById('renderedHtml');
 
-                const generatedHtml = `<h1>Hello!</h1>
+                renderedHtml.contentDocument.body.innerHTML = `<h1>Hello!</h1>
                 <img src="https://via.placeholder.com/150"/>
                 <p>This is a paragraph</p>`
-
-                renderedHtml.contentDocument.body.innerHTML =  generatedHtml
-
-                downloadButton.addEventListener('click', function (e){
-                  download('wireframe.html', generatedHtml);
-
-                })
-
-
-
             }
 
             reader.readAsDataURL(file);
