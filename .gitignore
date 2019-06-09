@@ -65,3 +65,7 @@ node_modules/
 .env
 .history
 dist
+
+
+# vscode project settings
+.vscode
