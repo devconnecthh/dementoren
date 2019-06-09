@@ -1,0 +1,9 @@
+language: node_js
+before_script:
+  - npm ci
+script:
+  - npm run build
+install:
+  - npm i -g firebase-tools
+after_success:
+  - firebase deploy --project dementoren-whiteboard-to-code --token $FIREBASE_TOKEN

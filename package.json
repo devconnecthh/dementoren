@@ -1,0 +1,23 @@
+{
+  "name": "dementoren-whiteboard-to-code-frontend",
+  "version": "0.0.1",
+  "description": "dementoren frontend part of the whiteboard2code project",
+  "main": "index.js",
+  "scripts": {
+    "build": "copyfiles --flat src/* dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devconnecthh/dementoren-whiteboard-to-code-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devconnecthh/dementoren-whiteboard-to-code-frontend/issues"
+  },
+  "homepage": "https://github.com/devconnecthh/dementoren-whiteboard-to-code-frontend#readme",
+  "devDependencies": {
+    "copyfiles": "^2.1.0"
+  }
+}
