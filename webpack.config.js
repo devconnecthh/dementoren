@@ -7,8 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
-    tailwind: './src/tailwind.js'
+    index: './src/index.js'
   },
   output: {
     filename: '[name].[chunkhash].js',
