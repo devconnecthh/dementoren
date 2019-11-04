@@ -50,12 +50,19 @@ fileInput.addEventListener('change', function (e) {
 
       const renderedHtml = document.getElementById('renderedHtml');
 
-
-      fetch('http://localhost:8080').then(async res => {
-
+      var data = new FormData()
+      data.append('file', file)
+      fetch('http://localhost:8080', {
+        method: 'POST',
+        body: data
+      }).then(async res => {
+        console.log("got response");
         const generatedHtml = await res.text();
+        console.log(generatedHtml);
         renderedHtml.contentDocument.body.innerHTML =  generatedHtml;
         localforage.setItem('image', generatedHtml, (e) => console.log('image stored in indexedDB'));
+      }).catch(e => {
+        console.log("error", e)
       })
     }
 
